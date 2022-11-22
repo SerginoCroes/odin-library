@@ -19,8 +19,8 @@ form {
     background-color: #eef;
     box-shadow: 2px 2px 4px #ccc;
     padding: 20px;
-    top: 100px;
-    left: calc(50% - 175px);
+    top: 200px;
+    left: calc(50vw - 175px);
 }
 
 label {
@@ -59,8 +59,11 @@ input[id='read'] {
     grid-area: 4 / 2 / 5 / 3;
 }
 
-input[type='submit'] {
+.buttons {
     grid-area: 5 / 2 / 6 / 3;
+}
+
+input[type='submit'] {
     background-color: #fff;
     border: 1px solid #888;
     border-radius: 2px;
@@ -72,18 +75,30 @@ input[type='submit']:hover {
     box-shadow: inset 1px 1px 4px #ccc;
 }
 
+input[type='button'] {
+    background-color: #fff;
+    border: 1px solid #888;
+    border-radius: 2px;
+    box-shadow: 2px 2px 4px #ccc;
+}
+
+input[type='button']:hover {
+    /* background-color: #eee; */
+    box-shadow: inset 1px 1px 4px #ccc;
+}
+
 #container {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
 }
 
 .book {
-    height: 150px;
-    width: 250px;
+    height: 250px;
+    width: 200px;
     border: 1px solid #888;
     border-radius: 5px;
+    background-color: #ffe;
     box-shadow: 2px 2px 4px #ccc;
-    margin: 20px;
+    margin: 10px;
     padding: 20px;
 }
