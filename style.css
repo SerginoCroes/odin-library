@@ -72,3 +72,18 @@ input[type='submit']:hover {
     box-shadow: inset 1px 1px 4px #ccc;
 }
 
+#container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.book {
+    height: 150px;
+    width: 250px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #ccc;
+    margin: 20px;
+    padding: 20px;
+}
