@@ -4,14 +4,12 @@ const container = document.querySelector('#container');
 const formInput = document.querySelector('form');
 
 addButton.addEventListener('click', () => formInput.style.display = 'grid');
-
 cancelButton.addEventListener('click', () => formInput.style.display = 'none');
-
 formInput.addEventListener('submit', function (e) {
   e.preventDefault();
   submitBook(e);
   loopThroughArray();
-  e.target.style.display = 'none';
+  formInput.style.display = 'none';
 });
 
 let myLibrary = [];
@@ -21,10 +19,14 @@ function Book(title, author, pages, hasRead) {
   this.author = author;
   this.pages = pages;
   this.hasRead = hasRead;
+}
 
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead ? 'read.' : 'not read yet.'}`;
-  }
+Book.prototype.info = function () {
+  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead ? 'read.' : 'not read yet.'}`;
+}
+
+Book.prototype.changeRead = function () {
+  this.hasRead = !this.hasRead;
 }
 
 function submitBook(entry) {
@@ -38,7 +40,7 @@ function submitBook(entry) {
       item.checked = false;
     }
   }
-  console.log(tempEntry);
+  //console.log(tempEntry);
   addBookToLibrary(tempEntry[0], tempEntry[1], tempEntry[2], tempEntry[3]);
 }
 
@@ -49,7 +51,7 @@ function addBookToLibrary(title, author, pages, hasRead) {
 function loopThroughArray() {
   container.innerHTML = '';
   for (let book in myLibrary) {
-    console.log(myLibrary[book].info());
+    //console.log(myLibrary[book].info());
     createDisplay(book);
   }
 }
@@ -61,16 +63,23 @@ function createDisplay(book) {
   const pages = document.createElement('p');
   const hasRead = document.createElement('p');
   const deleteButton = document.createElement('button');
+  const changeButton = document.createElement('button');
 
   author.textContent = `Author: ${myLibrary[book].title}`;
   title.textContent = `Title: ${myLibrary[book].author}`;
   pages.textContent = `Pages: ${myLibrary[book].pages}`;
   hasRead.textContent = myLibrary[book].hasRead ? 'read' : 'not read';
   deleteButton.textContent = 'delete';
+  changeButton.textContent = myLibrary[book].hasRead ? 'read' : 'not read';
 
   deleteButton.addEventListener('click', (e) => {
     myLibrary.splice(e.target.parentNode.id, 1);
-    container.removeChild(e.target.parentNode);
+    loopThroughArray();
+  });
+
+  changeButton.addEventListener('click', (e) => {
+    myLibrary[e.target.parentNode.id].changeRead();    
+    loopThroughArray();
   });
 
   div.appendChild(author);
@@ -78,6 +87,7 @@ function createDisplay(book) {
   div.appendChild(pages);
   div.appendChild(hasRead);
   div.appendChild(deleteButton);
+  div.appendChild(changeButton);
 
   div.classList.add('book');
   div.setAttribute('id', book);
