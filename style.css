@@ -15,15 +15,27 @@ body {
 
 .header h1 {
     padding: 0px;
-    margin: 0px;
+    margin: 0px 20p 20pxx;
 }
 
 button {
+    padding: 5px;
+}
+
+button, input[type='button'], input[type='submit'] {
     background-color: #fff;
     border: 1px solid #888;
     border-radius: 3px;
-    padding: 5px;
     box-shadow: 2px 2px 4px #ccc;
+}
+
+button:hover, input[type='button']:hover, input[type='submit']:hover {
+    box-shadow: inset 1px 1px 4px #ccc;
+}
+
+button:active, input[type='button']:active, input[type='submit']:active {
+    background-color: #eee;
+    box-shadow: inset 2px 2px 4px #aaa;
 }
 
 form {
@@ -39,7 +51,7 @@ form {
     background-color: #eef;
     box-shadow: 2px 2px 6px #ccc;
     padding: 20px;
-    top: 200px;
+    top: 120px;
     left: calc(50vw - 175px);
 }
 
@@ -81,30 +93,6 @@ input[id='read'] {
 
 .buttons {
     grid-area: 5 / 2 / 6 / 3;
-}
-
-input[type='submit'] {
-    background-color: #fff;
-    border: 1px solid #888;
-    border-radius: 2px;
-    box-shadow: 2px 2px 6px #ccc;
-}
-
-input[type='submit']:hover {
-    /* background-color: #eee; */
-    box-shadow: inset 1px 1px 4px #ccc;
-}
-
-input[type='button'] {
-    background-color: #fff;
-    border: 1px solid #888;
-    border-radius: 2px;
-    box-shadow: 2px 2px 4px #ccc;
-}
-
-input[type='button']:hover {
-    /* background-color: #eee; */
-    box-shadow: inset 1px 1px 4px #ccc;
 }
 
 #container {
