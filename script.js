@@ -56,7 +56,7 @@ function loopThroughArray() {
   }
 }
 
-function createDisplay(book) {
+function createDisplay(bookIndex) {
   const div = document.createElement('div');
   const author = document.createElement('p');
   const title = document.createElement('p');
@@ -65,12 +65,12 @@ function createDisplay(book) {
   const deleteButton = document.createElement('button');
   const changeButton = document.createElement('button');
 
-  author.textContent = `Author: ${myLibrary[book].title}`;
-  title.textContent = `Title: ${myLibrary[book].author}`;
-  pages.textContent = `Pages: ${myLibrary[book].pages}`;
-  hasRead.textContent = myLibrary[book].hasRead ? 'read' : 'not read';
+  author.textContent = `Author: ${myLibrary[bookIndex].title}`;
+  title.textContent = `Title: ${myLibrary[bookIndex].author}`;
+  pages.textContent = `Pages: ${myLibrary[bookIndex].pages}`;
+  hasRead.textContent = myLibrary[bookIndex].hasRead ? 'read' : 'not read';
   deleteButton.textContent = 'delete';
-  changeButton.textContent = myLibrary[book].hasRead ? 'read' : 'not read';
+  changeButton.textContent = myLibrary[bookIndex].hasRead ? 'read' : 'not read';
 
   deleteButton.addEventListener('click', (e) => {
     myLibrary.splice(e.target.parentNode.id, 1);
@@ -90,7 +90,7 @@ function createDisplay(book) {
   div.appendChild(changeButton);
 
   div.classList.add('book');
-  div.setAttribute('id', book);
+  div.setAttribute('id', bookIndex);
 
   container.appendChild(div);
 }
