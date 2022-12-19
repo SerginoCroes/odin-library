@@ -14,19 +14,21 @@ formInput.addEventListener('submit', function (e) {
 
 let myLibrary = [];
 
-function Book(title, author, pages, hasRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.hasRead = hasRead;
-}
+class Book {
+  constructor(title, author, pages, hasRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.hasRead = hasRead;
+  }
 
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead ? 'read.' : 'not read yet.'}`;
-}
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead ? 'read.' : 'not read yet.'}`;
+  }
 
-Book.prototype.changeRead = function () {
-  this.hasRead = !this.hasRead;
+  changeRead() {
+    this.hasRead = !this.hasRead;
+  }
 }
 
 function submitBook(entry) {
@@ -78,7 +80,7 @@ function createDisplay(bookIndex) {
   });
 
   changeButton.addEventListener('click', (e) => {
-    myLibrary[e.target.parentNode.id].changeRead();    
+    myLibrary[e.target.parentNode.id].changeRead();
     loopThroughArray();
   });
 
