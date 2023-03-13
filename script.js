@@ -34,7 +34,7 @@ class Book {
 function submitBook(entry) {
   let tempEntry = [];
   for (let item of entry.target) {
-    if (item.type === 'text') {
+    if (item.type === 'text' || item.type === 'number') {
       tempEntry.push(item.value);
       item.value = '';
     } else if (item.type === 'checkbox') {
